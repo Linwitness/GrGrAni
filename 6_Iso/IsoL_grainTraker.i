@@ -203,27 +203,28 @@
     f_name = L
     derivative_order = 2
     args = 'gr0 gr1 gr2 gr3 gr4 gr5 gr6 gr7'
-    function = '(L01*(gr1 + t)^2*(gr0 + t)^2 + L12*(gr0 + t)^2*(gr2 + t)^2 + L02*(gr3 + t)^2*(gr0 + t)^2 +
-                 L03*(gr4 + t)^2*(gr0 + t)^2 + L13*(gr0 + t)^2*(gr5 + t)^2 + L23*(gr0 + t)^2*(gr6 + t)^2 +
-                 L01*(gr7 + t)^2*(gr0 + t)^2 + L12*(gr1 + t)^2*(gr2 + t)^2 + L02*(gr3 + t)^2*(gr1 + t)^2 +
-                 L03*(gr4 + t)^2*(gr1 + t)^2 + L13*(gr1 + t)^2*(gr5 + t)^2 + L23*(gr1 + t)^2*(gr6 + t)^2 +
-                 L01*(gr7 + t)^2*(gr1 + t)^2 + L12*(gr3 + t)^2*(gr2 + t)^2 + L02*(gr2 + t)^2*(gr4 + t)^2 +
-                 L03*(gr2 + t)^2*(gr5 + t)^2 + L13*(gr2 + t)^2*(gr6 + t)^2 + L23*(gr2 + t)^2*(gr7 + t)^2 +
-                 L01*(gr3 + t)^2*(gr4 + t)^2 + L12*(gr3 + t)^2*(gr5 + t)^2 + L02*(gr3 + t)^2*(gr6 + t)^2 +
-                 L03*(gr3 + t)^2*(gr7 + t)^2 + L13*(gr4 + t)^2*(gr5 + t)^2 + L23*(gr4 + t)^2*(gr6 + t)^2 +
-                 L01*(gr7 + t)^2*(gr4 + t)^2 + L12*(gr5 + t)^2*(gr6 + t)^2 + L02*(gr5 + t)^2*(gr7 + t)^2 +
-                 L03*(gr6 + t)^2*(gr7 + t)^2 )
-                 /
-                 ((gr1 + t)^2*(gr0 + t)^2 + (gr0 + t)^2*(gr2 + t)^2 + (gr3 + t)^2*(gr0 + t)^2 +
-                  (gr4 + t)^2*(gr0 + t)^2 + (gr0 + t)^2*(gr5 + t)^2 + (gr0 + t)^2*(gr6 + t)^2 +
-                  (gr7 + t)^2*(gr0 + t)^2 + (gr1 + t)^2*(gr2 + t)^2 + (gr3 + t)^2*(gr1 + t)^2 +
-                  (gr4 + t)^2*(gr1 + t)^2 + (gr1 + t)^2*(gr5 + t)^2 + (gr1 + t)^2*(gr6 + t)^2 +
-                  (gr7 + t)^2*(gr1 + t)^2 + (gr3 + t)^2*(gr2 + t)^2 + (gr2 + t)^2*(gr4 + t)^2 +
-                  (gr2 + t)^2*(gr5 + t)^2 + (gr2 + t)^2*(gr6 + t)^2 + (gr2 + t)^2*(gr7 + t)^2 +
-                  (gr3 + t)^2*(gr4 + t)^2 + (gr3 + t)^2*(gr5 + t)^2 + (gr3 + t)^2*(gr6 + t)^2 +
-                  (gr3 + t)^2*(gr7 + t)^2 + (gr4 + t)^2*(gr5 + t)^2 + (gr4 + t)^2*(gr6 + t)^2 +
-                  (gr7 + t)^2*(gr4 + t)^2 + (gr5 + t)^2*(gr6 + t)^2 + (gr5 + t)^2*(gr7 + t)^2 +
-                  (gr6 + t)^2*(gr7 + t)^2 ) '
+    function = 'L12'
+               # '(L01*(gr1 + t)^2*(gr0 + t)^2 + L12*(gr0 + t)^2*(gr2 + t)^2 + L02*(gr3 + t)^2*(gr0 + t)^2 +
+               #   L03*(gr4 + t)^2*(gr0 + t)^2 + L13*(gr0 + t)^2*(gr5 + t)^2 + L23*(gr0 + t)^2*(gr6 + t)^2 +
+               #   L01*(gr7 + t)^2*(gr0 + t)^2 + L12*(gr1 + t)^2*(gr2 + t)^2 + L02*(gr3 + t)^2*(gr1 + t)^2 +
+               #   L03*(gr4 + t)^2*(gr1 + t)^2 + L13*(gr1 + t)^2*(gr5 + t)^2 + L23*(gr1 + t)^2*(gr6 + t)^2 +
+               #   L01*(gr7 + t)^2*(gr1 + t)^2 + L12*(gr3 + t)^2*(gr2 + t)^2 + L02*(gr2 + t)^2*(gr4 + t)^2 +
+               #   L03*(gr2 + t)^2*(gr5 + t)^2 + L13*(gr2 + t)^2*(gr6 + t)^2 + L23*(gr2 + t)^2*(gr7 + t)^2 +
+               #   L01*(gr3 + t)^2*(gr4 + t)^2 + L12*(gr3 + t)^2*(gr5 + t)^2 + L02*(gr3 + t)^2*(gr6 + t)^2 +
+               #   L03*(gr3 + t)^2*(gr7 + t)^2 + L13*(gr4 + t)^2*(gr5 + t)^2 + L23*(gr4 + t)^2*(gr6 + t)^2 +
+               #   L01*(gr7 + t)^2*(gr4 + t)^2 + L12*(gr5 + t)^2*(gr6 + t)^2 + L02*(gr5 + t)^2*(gr7 + t)^2 +
+               #   L03*(gr6 + t)^2*(gr7 + t)^2 )
+               #   /
+               #   ((gr1 + t)^2*(gr0 + t)^2 + (gr0 + t)^2*(gr2 + t)^2 + (gr3 + t)^2*(gr0 + t)^2 +
+               #    (gr4 + t)^2*(gr0 + t)^2 + (gr0 + t)^2*(gr5 + t)^2 + (gr0 + t)^2*(gr6 + t)^2 +
+               #    (gr7 + t)^2*(gr0 + t)^2 + (gr1 + t)^2*(gr2 + t)^2 + (gr3 + t)^2*(gr1 + t)^2 +
+               #    (gr4 + t)^2*(gr1 + t)^2 + (gr1 + t)^2*(gr5 + t)^2 + (gr1 + t)^2*(gr6 + t)^2 +
+               #    (gr7 + t)^2*(gr1 + t)^2 + (gr3 + t)^2*(gr2 + t)^2 + (gr2 + t)^2*(gr4 + t)^2 +
+               #    (gr2 + t)^2*(gr5 + t)^2 + (gr2 + t)^2*(gr6 + t)^2 + (gr2 + t)^2*(gr7 + t)^2 +
+               #    (gr3 + t)^2*(gr4 + t)^2 + (gr3 + t)^2*(gr5 + t)^2 + (gr3 + t)^2*(gr6 + t)^2 +
+               #    (gr3 + t)^2*(gr7 + t)^2 + (gr4 + t)^2*(gr5 + t)^2 + (gr4 + t)^2*(gr6 + t)^2 +
+               #    (gr7 + t)^2*(gr4 + t)^2 + (gr5 + t)^2*(gr6 + t)^2 + (gr5 + t)^2*(gr7 + t)^2 +
+               #    (gr6 + t)^2*(gr7 + t)^2 ) '
 
     constant_names =       'L01   L02  L03  L12  L13  L23  t'
     constant_expressions = '100.0 20.0 80.0 60.5 5.0 35.5 5e-2'
