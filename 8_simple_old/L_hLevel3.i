@@ -12,7 +12,7 @@
 []
 
 [GlobalParams]
-  op_num = 4
+  op_num = 3
   var_name_base = 'gr'
 
   #For Materials Block
@@ -28,8 +28,8 @@
 [UserObjects]
   [./voronoi]
     type = PolycrystalVoronoi
-    rand_seed = 6
-    grain_num = 4
+    rand_seed = 3
+    grain_num = 3
     coloring_algorithm = bt
   [../]
 []
@@ -47,14 +47,6 @@
     order = FIRST
     family = LAGRANGE
   [../]
-  [./unique_grains]
-    order = FIRST
-    family = LAGRANGE
-  [../]
-  [./var_indices]
-    order = FIRST
-    family = LAGRANGE
-  [../]
 []
 
 [Kernels]
@@ -64,14 +56,14 @@
   [../]
   [./gr0bulk]
     type = ACGrGrPoly
-    v = 'gr1 gr2 gr3'
+    v = 'gr1 gr2'
     variable = gr0
     mob_name = L
   [../]
   [./gr0interface]
     type = ACInterface
     variable = gr0
-    args = 'gr1 gr2 gr3'
+    args = 'gr1 gr2'
     kappa_name = kappa_op
     mob_name = L
     variable_L = true
@@ -82,14 +74,14 @@
   [../]
   [./gr1bulk]
     type = ACGrGrPoly
-    v = 'gr0 gr2 gr3'
+    v = 'gr0 gr2'
     variable = gr1
     mob_name = L
   [../]
   [./gr1interface]
     type = ACInterface
     variable = gr1
-    args = 'gr0 gr2 gr3'
+    args = 'gr0 gr2'
     kappa_name = kappa_op
     variable_L = true
     mob_name = L
@@ -100,32 +92,14 @@
   [../]
   [./gr2bulk]
     type = ACGrGrPoly
-    v = 'gr0 gr1 gr3'
+    v = 'gr0 gr1'
     variable = gr2
     mob_name = L
   [../]
   [./gr2interface]
     type = ACInterface
-    args = 'gr0 gr1 gr3'
+    args = 'gr0 gr1'
     variable = gr2
-    kappa_name = kappa_op
-    variable_L = true
-    mob_name = L
-  [../]
-  [./gr3dot]
-    type = TimeDerivative
-    variable = gr3
-  [../]
-  [./gr3bulk]
-    type = ACGrGrPoly
-    v = 'gr0 gr1 gr2'
-    variable = gr3
-    mob_name = L
-  [../]
-  [./gr3interface]
-    type = ACInterface
-    args = 'gr0 gr1 gr2'
-    variable = gr3
     kappa_name = kappa_op
     variable_L = true
     mob_name = L
@@ -150,22 +124,16 @@
 
 [Materials]
   [./L_equation]
-    type = myAnisoL
+    type = DerivativeParsedMaterial
     f_name = L
-    # derivative_order = 2
-    opnum = 4
-    args = 'gr0 gr1 gr2 gr3'
-    tignr = 1e-2
-    # function = 'gr1 + gr2 + gr3 + gr0'
-    # (L01*(gr1 + t)^2*(gr0 + t)^2 + L12*(gr1 + t)^2*(gr2 + t)^2 + L02*(gr2 + t)^2*(gr0 + t)^2 +
-    #              L03*(gr3 + t)^2*(gr0 + t)^2 + L13*(gr1 + t)^2*(gr3 + t)^2 + L23*(gr2 + t)^2*(gr3 + t)^2)/
-    #             ((gr0 + t)^2*(gr1 + t)^2 + (gr1 + t)^2*(gr2 + t)^2 + (gr2 + t)^2*(gr0 + t)^2 +
-    #              (gr3 + t)^2*(gr0 + t)^2 + (gr1 + t)^2*(gr3 + t)^2 + (gr2 + t)^2*(gr3 + t)^2) '
+    derivative_order = 2
+    args = 'gr0 gr1 gr2'
+    function = '(L01*(gr1 + t)^2*(gr0 + t)^2 + L12*(gr1 + t)^2*(gr2 + t)^2 + L02*(gr2 + t)^2*(gr0 + t)^2)
+                 /
+                ((gr0 + t)^2*(gr1 + t)^2 + (gr1 + t)^2*(gr2 + t)^2 + (gr2 + t)^2*(gr0 + t)^2)'
 
-    # constant_names =       'L01   L02  L03  L12  L13  L23'
-    L_coeff =                '100.0 20.0 80.0
-                              60.5 5.0
-                              35.5'
+    constant_names =       'L01   L02   L12    t'
+    constant_expressions = '100.0 20.0  60.5   1e-2'
     outputs = exodus
     output_properties = 'L'
   [../]
@@ -207,10 +175,6 @@
   [./gr2_area]
     type = ElementIntegralVariablePostprocessor
     variable = gr2
-  [../]
-  [./gr3_area]
-    type = ElementIntegralVariablePostprocessor
-    variable = gr3
   [../]
   [./walltime]
     type = PerformanceData

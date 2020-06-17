@@ -153,19 +153,13 @@
     type = myAnisoL
     f_name = L
     # derivative_order = 2
-    opnum = 4
     args = 'gr0 gr1 gr2 gr3'
     tignr = 1e-2
-    # function = 'gr1 + gr2 + gr3 + gr0'
-    # (L01*(gr1 + t)^2*(gr0 + t)^2 + L12*(gr1 + t)^2*(gr2 + t)^2 + L02*(gr2 + t)^2*(gr0 + t)^2 +
-    #              L03*(gr3 + t)^2*(gr0 + t)^2 + L13*(gr1 + t)^2*(gr3 + t)^2 + L23*(gr2 + t)^2*(gr3 + t)^2)/
-    #             ((gr0 + t)^2*(gr1 + t)^2 + (gr1 + t)^2*(gr2 + t)^2 + (gr2 + t)^2*(gr0 + t)^2 +
-    #              (gr3 + t)^2*(gr0 + t)^2 + (gr1 + t)^2*(gr3 + t)^2 + (gr2 + t)^2*(gr3 + t)^2) '
 
-    # constant_names =       'L01   L02  L03  L12  L13  L23'
-    L_coeff =                '100.0 20.0 80.0
-                              60.5 5.0
-                              35.5'
+    L_coeff =                '1     100.0 20.0 80.0
+                              100.0 1     60.5 5.0
+                              20.0  60.5  1    35.5
+                              80.0  5.0   35.5 1'
     outputs = exodus
     output_properties = 'L'
   [../]
